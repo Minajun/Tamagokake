@@ -1,7 +1,7 @@
 import java.awt.Graphics;
 import java.awt.Point;
 
-public abstract class GameObject {
+public abstract class GameObject implements MyGraphics{
 	protected Point p; //位置
 	protected int size; //サイズ
 

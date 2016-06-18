@@ -20,6 +20,7 @@ public class Block extends GameObject{
 	}
 
 	//描画
+	@Override
 	public void draw(Graphics g){
 		if(nextBlock != null){
 			nextBlock.draw(g);

@@ -18,15 +18,16 @@ public class Node extends GameObject{
 			nextNode = new Node(this.p, size);
 		}
 	}
-	
+
 	public void Move(GameObject obj){
 		if(nextNode != null)
 			nextNode.Move(this);
 		this.p = (Point)obj.p.clone();
-		
+
 	}
 
 	//描画
+	@Override
 	public void draw(Graphics g){
 		g.setColor(Color.green);
 		g.fillOval(p.x*size, p.y*size, size, size);
