@@ -14,7 +14,6 @@ public class Block extends GameObject{
 		if(nextBlock != null){
 			nextBlock.addBlock(obj, p);
 		}else{
-			System.out.println(p.x + "," + p.y);
 			nextBlock = new Block(p, size);
 		}
 	}
@@ -30,12 +29,17 @@ public class Block extends GameObject{
 
 	//ブロックの衝突判定
 	public void CollisionBlocks(GameObject obj){
-		CollisionDetect(obj);
+		if(nextBlock != null){
+			if(CollisionDetect(obj) == false){
+				nextBlock.CollisionBlocks(obj);
+			}
+		}
 	}
 
 	//衝突時の処理
 	@Override
-	protected void CollosionProc(GameObject obj){
+	protected void CollisionProc(GameObject obj){
+		System.out.println("Collision!!");
 		//頭と衝突した時
 		if(obj instanceof Head){
 			System.out.println("GameOver");
