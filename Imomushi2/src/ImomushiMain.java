@@ -31,7 +31,6 @@ public class ImomushiMain extends JApplet implements Runnable, MouseListener{
 
 		//描画処理
 		drawUpdate(g);
-		node.draw(g);
 	}
 
 	//実行部
@@ -41,6 +40,10 @@ public class ImomushiMain extends JApplet implements Runnable, MouseListener{
 		block.addBlock(block, new Point(0,20));
 		block.addBlock(block, new Point(0,20));
 		block.addBlock(block, new Point(20,0));
+		block.addBlock(block, new Point(15,10));
+		block.addBlock(block, new Point(5,13));
+		block.addBlock(block, new Point(14,10));
+		block.addBlock(block, new Point(11,9));
 		for(int i = 1; i < 20; i++){
 			block.addBlock(block, new Point(i,0));
 			block.addBlock(block, new Point(0,i));
@@ -55,6 +58,7 @@ public class ImomushiMain extends JApplet implements Runnable, MouseListener{
 				node.Move(head);
 				head.Move();
 				block.CollisionBlocks(head);
+				node.CollisionNode(head);
 				Thread.sleep(500);
 				repaint();
 			} catch (InterruptedException e) {
@@ -76,8 +80,8 @@ public class ImomushiMain extends JApplet implements Runnable, MouseListener{
 	}
 
 	public void drawUpdate(Graphics g){
-		node.draw(g);
 		head.draw(g);
+		node.draw(g);
 		block.draw(g);
 	}
 
