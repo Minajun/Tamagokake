@@ -12,9 +12,11 @@ public class ImomushiMain extends JApplet implements Runnable, MouseListener{
 	private final int w = 720, h = 540; //画面の大きさ
 	private Thread t;
 
-	private Head head = new Head(new Point(5,5), size);
+
 	private Node node = new Node(new Point(5,6), size);
+	private Head head = new Head(new Point(5,5), size, node);
 	private Block block = new Block(new Point(0,0), size);
+	private Apple apple = new Apple(new Point(10,10), size);
 
 	//Appletの初期化
 	public void init(){
@@ -51,6 +53,7 @@ public class ImomushiMain extends JApplet implements Runnable, MouseListener{
 			block.addBlock(block, new Point(20,i));
 		}
 
+
 		//メインループ
 		while(t != null){
 			try {
@@ -59,6 +62,11 @@ public class ImomushiMain extends JApplet implements Runnable, MouseListener{
 				head.Move();
 				block.CollisionBlocks(head);
 				node.CollisionNode(head);
+				apple.collisionApple(head);
+				if(apple.incNode){
+					node.addNode(head);
+					apple.setincNode();
+				}
 				Thread.sleep(500);
 				repaint();
 			} catch (InterruptedException e) {
@@ -83,6 +91,7 @@ public class ImomushiMain extends JApplet implements Runnable, MouseListener{
 		head.draw(g);
 		node.draw(g);
 		block.draw(g);
+		apple.draw(g);
 	}
 
 	@Override
