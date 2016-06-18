@@ -11,6 +11,7 @@ public class Head extends GameObject{
 	}
 
 	//描画
+	@Override
 	public void draw(Graphics g){
 		g.setColor(Color.yellow);
 		g.fillOval(p.x*size, p.y*size, size, size);

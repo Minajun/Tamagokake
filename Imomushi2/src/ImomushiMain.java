@@ -12,9 +12,9 @@ public class ImomushiMain extends JApplet implements Runnable, MouseListener{
 	private final int w = 720, h = 540; //画面の大きさ
 	private Thread t;
 
-	private Stage stage = new Stage();
 	private Head head = new Head(new Point(5,5), size);
 	private Node node = new Node(new Point(5,6), size);
+	private Block block = new Block(new Point(0,0), size);
 
 	//Appletの初期化
 	public void init(){
@@ -30,29 +30,23 @@ public class ImomushiMain extends JApplet implements Runnable, MouseListener{
 		g.clearRect(0, 0, w, h);
 
 		//描画処理
-		stage.drawUpdate(g);
+		drawUpdate(g);
 		node.draw(g);
 	}
 
 	//実行部
 	public void run(){
 		//ブロックの配置
-		stage.addObject(new Block(new Point(0, 0), size));
-		stage.addObject(new Block(new Point(20, 20), size));
-		stage.addObject(new Block(new Point(0, 20), size));
-		stage.addObject(new Block(new Point(20, 0), size));
+		block.addBlock(block, new Point(20,20));
+		block.addBlock(block, new Point(0,20));
+		block.addBlock(block, new Point(0,20));
+		block.addBlock(block, new Point(20,0));
 		for(int i = 1; i < 20; i++){
-			stage.addObject(new Block(new Point(i, 0), size));
-			stage.addObject(new Block(new Point(0, i), size));
-			stage.addObject(new Block(new Point(i, 20), size));
-			stage.addObject(new Block(new Point(20, i), size));
+			block.addBlock(block, new Point(i,0));
+			block.addBlock(block, new Point(0,i));
+			block.addBlock(block, new Point(i,20));
+			block.addBlock(block, new Point(20,i));
 		}
-
-		//頭の配置
-		stage.addObject(head);
-
-		//節の配置
-		stage.addObject(node);
 
 		//メインループ
 		while(t != null){
@@ -78,6 +72,12 @@ public class ImomushiMain extends JApplet implements Runnable, MouseListener{
 		  }else if (btn == MouseEvent.BUTTON3){
 			  node.addNode(head);
 		  }
+	}
+
+	public void drawUpdate(Graphics g){
+		node.draw(g);
+		head.draw(g);
+		block.draw(g);
 	}
 
 	@Override
