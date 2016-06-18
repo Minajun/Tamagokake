@@ -29,17 +29,17 @@ public class Block extends GameObject{
 	}
 
 	//ブロックの衝突判定
-	public void CollisionBlocks(GameObject obj){
+	public void collisionBlocks(GameObject obj){
 		if(nextBlock != null){
-			if(CollisionDetect(obj) == false){
-				nextBlock.CollisionBlocks(obj);
+			if(collisionDetect(obj) == false){
+				nextBlock.collisionBlocks(obj);
 			}
 		}
 	}
 
 	//衝突時の処理
 	@Override
-	protected void CollisionProc(GameObject obj){
+	protected void collisionProc(GameObject obj){
 		System.out.println("Collision!!");
 		//頭と衝突した時
 		if(obj instanceof Head){
@@ -55,12 +55,9 @@ public class Block extends GameObject{
 		//リンゴと衝突したとき
 		else if(obj instanceof Apple){
 			System.out.println("collision apple");
-			//colApple =true;
-			obj.CollisionProc(this);
-
+			obj.collisionProc(this);
 		}
 		else{
-
 		}
 	}
 }

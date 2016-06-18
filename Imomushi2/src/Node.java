@@ -38,16 +38,16 @@ public class Node extends GameObject{
 	}
 
 	//ブロックの衝突判定
-	public void CollisionNode(GameObject obj){
-		if(CollisionDetect(obj) == false){
+	public void collisionNode(GameObject obj){
+		if(collisionDetect(obj) == false){
 			if(nextNode != null)
-				nextNode.CollisionNode(obj);
+				nextNode.collisionNode(obj);
 		}
 	}
 
 	//衝突時の処理
 	@Override
-	protected void CollisionProc(GameObject obj){
+	protected void collisionProc(GameObject obj){
 		System.out.println("Collision Node!!");
 		//頭と衝突した時
 		if(obj instanceof Head){
