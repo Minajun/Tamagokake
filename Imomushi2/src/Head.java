@@ -4,10 +4,12 @@ import java.awt.Point;
 
 public class Head extends GameObject{
 	private int dist = 0;
+	Node nextNode = null;
 
-	public Head(Point p, int size) {
+	public Head(Point p, int size, Node node) {
 		super(p, size);
 		// TODO 自動生成されたコンストラクター・スタブ
+		nextNode = node;
 	}
 
 	//描画
