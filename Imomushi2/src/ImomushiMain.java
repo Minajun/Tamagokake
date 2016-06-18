@@ -54,6 +54,7 @@ public class ImomushiMain extends JApplet implements Runnable, MouseListener{
 				//処理
 				node.Move(head);
 				head.Move();
+				block.CollisionBlocks(head);
 				Thread.sleep(500);
 				repaint();
 			} catch (InterruptedException e) {

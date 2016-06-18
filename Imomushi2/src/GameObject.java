@@ -23,13 +23,13 @@ public abstract class GameObject implements MyGraphics{
 	public boolean CollisionDetect(GameObject obj){
 		boolean flag = obj.p.equals(this.p);
 		if(flag){
-			CollosionProc(obj);
+			CollisionProc(obj);
 		}
 		return flag;
 	}
 
 	//衝突時の処理
-	protected void CollosionProc(GameObject obj){
+	protected void CollisionProc(GameObject obj){
 
 	}
 
