@@ -10,10 +10,20 @@ public class Block extends GameObject{
 	}
 
 	//ブロックの追加
-
+	public void addBlock(GameObject obj, Point p){
+		if(nextBlock != null){
+			nextBlock.addBlock(obj, p);
+		}else{
+			System.out.println(p.x + "," + p.y);
+			nextBlock = new Block(p, size);
+		}
+	}
 
 	//描画
 	public void draw(Graphics g){
+		if(nextBlock != null){
+			nextBlock.draw(g);
+		}
 		g.drawRect(p.x*size, p.y*size, size, size);
 	}
 
