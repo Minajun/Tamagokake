@@ -23,7 +23,6 @@ public class Node extends GameObject{
 		if(nextNode != null)
 			nextNode.Move(this);
 		this.p = (Point)obj.p.clone();
-
 	}
 
 	//描画
@@ -34,5 +33,32 @@ public class Node extends GameObject{
 		g.setColor(Color.black);
 		if(nextNode != null)
 			nextNode.draw(g);
+		if(nextNode == null)
+			System.out.println(this.p.x + "," + this.p.y);
+	}
+
+	//ブロックの衝突判定
+	public void CollisionNode(GameObject obj){
+		if(CollisionDetect(obj) == false){
+			if(nextNode != null)
+				nextNode.CollisionNode(obj);
+		}
+	}
+
+	//衝突時の処理
+	@Override
+	protected void CollisionProc(GameObject obj){
+		System.out.println("Collision Node!!");
+		//頭と衝突した時
+		if(obj instanceof Head){
+			System.out.println("GameOver");
+			//g.drawString("GameOver...", 270, 270);
+			try{
+				Thread.sleep(5000);
+				System.exit(1);
+				}catch(InterruptedException e){
+				e.printStackTrace();
+			}
+		}
 	}
 }
