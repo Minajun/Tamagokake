@@ -12,6 +12,14 @@ public class Head extends GameObject{
 		nextNode = node;
 	}
 
+	//衝突時の処理
+	@Override
+	public void CollisionProc(GameObject obj){
+		if(obj instanceof Apple){
+			nextNode.addNode(this);
+		}
+	}
+
 	//描画
 	@Override
 	public void draw(Graphics g){

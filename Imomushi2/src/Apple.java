@@ -50,12 +50,15 @@ public class Apple extends GameObject {
 			//g.drawString("GameOver...", 270, 270);
 			try{
 				Thread.sleep(0);
-				//System.exit(1);
-				incNode = true;
+				this.p.setLocation(5,13);
+				obj.CollisionProc(this);
 
 				}catch(InterruptedException e){
 				e.printStackTrace();
 			}
+		}
+		else if(obj instanceof Block){
+			this.p.setLocation((int)(Math.random()*size),(int)(Math.random()*size));
 		}
 	}
 

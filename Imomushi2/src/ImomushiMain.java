@@ -63,10 +63,7 @@ public class ImomushiMain extends JApplet implements Runnable, MouseListener{
 				block.CollisionBlocks(head);
 				node.CollisionNode(head);
 				apple.collisionApple(head);
-				if(apple.incNode){
-					node.addNode(head);
-					apple.setincNode();
-				}
+				block.CollisionBlocks(apple);
 				Thread.sleep(500);
 				repaint();
 			} catch (InterruptedException e) {

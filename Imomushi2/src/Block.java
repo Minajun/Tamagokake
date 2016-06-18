@@ -3,6 +3,7 @@ import java.awt.Point;
 
 public class Block extends GameObject{
 	Block nextBlock = null;
+	boolean colApple = false;
 
 	public Block(Point p, int size) {
 		super(p, size);
@@ -50,6 +51,16 @@ public class Block extends GameObject{
 			}catch(InterruptedException e){
 				e.printStackTrace();
 			}
+		}
+		//リンゴと衝突したとき
+		else if(obj instanceof Apple){
+			System.out.println("collision apple");
+			//colApple =true;
+			obj.CollisionProc(this);
+
+		}
+		else{
+
 		}
 	}
 }
