@@ -34,7 +34,7 @@ public class Apple extends GameObject {
 
 	//リンゴの衝突判定
 	public void collisionApple(GameObject obj){
-		if(CollisionDetect(obj) == false){
+		if(collisionDetect(obj) == false){
 			if(nextApple != null)
 				nextApple.collisionApple(obj);
 		}
@@ -42,7 +42,7 @@ public class Apple extends GameObject {
 
 	//衝突時の処理
 	@Override
-	protected void CollisionProc(GameObject obj){
+	protected void collisionProc(GameObject obj){
 		System.out.println("Collision Apple!!");
 		//頭と衝突した時
 		if(obj instanceof Head){
@@ -51,7 +51,7 @@ public class Apple extends GameObject {
 			try{
 				Thread.sleep(0);
 				this.p.setLocation(5,13);
-				obj.CollisionProc(this);
+				obj.collisionProc(this);
 
 				}catch(InterruptedException e){
 				e.printStackTrace();
